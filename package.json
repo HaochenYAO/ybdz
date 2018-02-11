@@ -7,7 +7,7 @@
   "author": "TheBlueRider",
   "license": "MIT",
   "config": {
-    "port": 65152
+    "port": 80
   },
   "scripts": {
     "test": "eslint .",
