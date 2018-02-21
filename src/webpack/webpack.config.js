@@ -2,7 +2,7 @@ const path = require('path')
 const webpack = require('webpack')
 
 const BUILD_DIR = path.resolve(__dirname, '../client/build');
-const APP_DIR = path.resolve(__dirname, '../client/app');
+const APP_DIR = path.resolve(__dirname, '../client');
 
 module.exports = {
   devtool: 'cheap-module-eval-source-map',
@@ -30,7 +30,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx$/,
+        test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         use: {
           loader: 'babel-loader',
@@ -38,6 +38,10 @@ module.exports = {
             presets: ['env', 'react']
           }
         }
+      },
+      {
+        test: /\.css$/,
+        use: [ 'style-loader', 'css-loader' ]
       }
     ]
   },

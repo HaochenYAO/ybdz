@@ -7,7 +7,7 @@ const app = new Koa();
 const router = new Router();
 
 app.use(require('koa-static')(path.join(__dirname, '../client/build')));
-app.use(views(path.join(__dirname, '../client/views'), {
+app.use(views(path.join(__dirname, './views'), {
   extension: 'html'
 }));
 
@@ -22,4 +22,5 @@ app.use(async(ctx) => {
   await ctx.render('index.html');
 });
 
-app.listen(process.env.PORT || 3001);
+app.listen(process.env.PORT || 3008);
+console.log('app listen on ' + (process.env.PORT || 3010));
