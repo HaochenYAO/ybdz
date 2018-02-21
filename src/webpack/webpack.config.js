@@ -1,7 +1,8 @@
-const path = require('path')
-const webpack = require('webpack')
+const path = require('path');
+const webpack = require('webpack');
 
-const BUILD_DIR = path.resolve(__dirname, '../client/build');
+// const BUILD_DIR = path.resolve(__dirname, '../client/build');
+
 const APP_DIR = path.resolve(__dirname, '../client');
 
 module.exports = {
@@ -9,7 +10,7 @@ module.exports = {
   entry: [
     'react-hot-loader/patch',
     'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server', //HRM更新时刷新整个页面，如果是only-dev-server是手动刷新
+    'webpack/hot/only-dev-server', // HRM更新时刷新整个页面，如果是only-dev-server是手动刷新
     `${APP_DIR}/index.jsx`,
   ],
   output: {
@@ -41,7 +42,7 @@ module.exports = {
       },
       {
         test: /\.css$/,
-        use: [ 'style-loader', 'css-loader' ]
+        use: ['style-loader', 'css-loader']
       }
     ]
   },
@@ -51,4 +52,4 @@ module.exports = {
     port: 3000,
     contentBase: path.resolve(__dirname, 'build')
   }
-}
+};

@@ -1,4 +1,3 @@
-import { combineReducers } from 'redux';
 import { ADD_TODO, COMPLETE_TODO } from '../actions';
 
 export default function (state = [], action) {

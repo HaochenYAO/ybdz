@@ -1,23 +1,22 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const Todo = (onClick, completed, text) => {
-  return (
-    <li
-      onClick={onClick}
+const Todo = props =>
+  <li>
+    <button
+      onClick={props.onClick}
       style={{
-        textDecoration: completed ? 'line-through' : 'none',
-        cursor: completed ? 'default' : 'pointer'
+        textDecoration: props.completed ? 'line-through' : 'none',
+        cursor: props.completed ? 'default' : 'pointer'
       }}
     >
-      {text}
-    </li>);
-}
-
-export default Todo;
+      {props.text}
+    </button>
+  </li>;
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,
   text: PropTypes.string.isRequired,
   completed: PropTypes.bool.isRequired
 };
+export default Todo;
