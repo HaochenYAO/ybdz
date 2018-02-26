@@ -33,12 +33,7 @@ module.exports = {
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: ['env', 'react']
-          }
-        }
+        use: 'babel-loader?cacheDirectory',
       },
       {
         test: /\.css$/,

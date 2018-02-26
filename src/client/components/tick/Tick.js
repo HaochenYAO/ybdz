@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 
 class Tick extends Component {
-
-  constructor(props) {
-    super(props);
-    this.state = { timeNow: new Date().toLocaleTimeString() };
-  }
-
+  state = {
+    timeNow: new Date().toLocaleTimeString()
+  };
   componentDidMount() {
     const intervalId = setInterval(this.timer.bind(this), 1000);
     // store intervalId in the state so it can be accessed later:

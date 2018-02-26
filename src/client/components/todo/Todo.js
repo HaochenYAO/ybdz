@@ -1,9 +1,10 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
+import { Button } from 'antd';
 
-const Todo = props =>
+const Todo = props => (
   <li>
-    <button
+    <Button
       onClick={props.onClick}
       style={{
         textDecoration: props.completed ? 'line-through' : 'none',
@@ -11,8 +12,8 @@ const Todo = props =>
       }}
     >
       {props.text}
-    </button>
-  </li>;
+    </Button>
+  </li>);
 
 Todo.propTypes = {
   onClick: PropTypes.func.isRequired,

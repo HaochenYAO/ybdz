@@ -6,13 +6,12 @@ const TodoList = (props) => {
   const { onTodoClick, todos } = props;
   return (
     <ul>
-      {todos.map((todo, index) =>
+      {todos.map((todo, index) => (
         <Todo
           {...todo}
-          key={index}
           onClick={() => onTodoClick(index)}
-        />
-      )}
+        />))
+      }
     </ul>);
 };
 

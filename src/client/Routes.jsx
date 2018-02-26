@@ -4,21 +4,35 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import App from './containers/App';
-import Welcome from './containers/Welcome';
+import WelcomeApp from './containers/WelcomeApp';
+import TickApp from './containers/TickApp';
+import TodoApp from './containers/TodoApp';
+import PermisApp from './containers/PermisApp';
 
 export const routes = [
   {
     path: '/',
-    component: App,
+    component: WelcomeApp,
     exact: true,
-    pageName: 'App',
+    pageName: 'WelcomeApp',
   },
   {
-    path: '/tick',
-    component: Welcome,
+    path: '/todo',
+    component: TodoApp,
     exact: true,
-    pageName: 'Welcome',
+    pageName: 'TodoApp',
+  },
+  {
+    path: '/tick/:name',
+    component: TickApp,
+    exact: true,
+    pageName: 'TickApp',
+  },
+  {
+    path: '/permis',
+    component: PermisApp,
+    exact: true,
+    pageName: 'PermisApp',
   }
 ];
 

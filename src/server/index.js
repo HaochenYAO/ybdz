@@ -19,9 +19,9 @@ router.get('/', async (ctx, next) => {
   console.log(`${ctx.method} ${ctx.url} - ${ms}ms`);
 });
 // response
-app.use(async(ctx) => {
+app.use(async (ctx) => {
   await ctx.render('index.html');
 });
 
-console.log(`app listen on ${(process.env.PORT || 3009)}`);
-app.listen(process.env.PORT || 3009);
+console.log(`app listen on ${(process.env.PORT || 3004)}`);
+app.listen(process.env.PORT || 3004);
