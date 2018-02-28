@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { VisibilityFilters } from '../actions';
+import { VisibilityFilters } from '../actions/todo/filterAction';
 
 const todoSelector = state => state.todos;
 const filterSelector = state => state.visibilityFilter;

@@ -23,5 +23,4 @@ app.use(async (ctx) => {
   await ctx.render('index.html');
 });
 
-console.log(`app listen on ${(process.env.PORT || 3004)}`);
-app.listen(process.env.PORT || 3004);
+app.listen(process.env.PORT || 3003);

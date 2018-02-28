@@ -1,12 +1,13 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import { addTodo, completeTodo, setVisibilityFilter } from '../actions';
+import { addTodo, completeTodo } from '../actions/todo/todoAction';
+import { setVisibilityFilter } from '../actions/todo/filterAction';
 import AddTodo from '../components/todo/AddTodo';
 import TodoList from '../components/todo/TodoList';
 import Footer from '../components/todo/Footer';
 import Nav from '../components/common/Nav';
-import selector from '../selectors/TodoSelector';
+import selector from '../selectors/todoSelector';
 
 const TodoApp = (props) => {
   // Injected by connect() call:
@@ -26,7 +27,7 @@ const TodoApp = (props) => {
         <TodoList
           todos={visibleTodos}
           onTodoClick={
-            index => dispatch(completeTodo(index))
+            id => dispatch(completeTodo(id))
           }
         />
         <Footer

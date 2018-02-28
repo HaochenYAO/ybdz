@@ -8,6 +8,7 @@ import WelcomeApp from './containers/WelcomeApp';
 import TickApp from './containers/TickApp';
 import TodoApp from './containers/TodoApp';
 import PermisApp from './containers/PermisApp';
+import RedditApp from './containers/RedditApp';
 
 export const routes = [
   {
@@ -33,6 +34,12 @@ export const routes = [
     component: PermisApp,
     exact: true,
     pageName: 'PermisApp',
+  },
+  {
+    path: '/reddit',
+    component: RedditApp,
+    exact: true,
+    pageName: 'RedditApp',
   }
 ];
 

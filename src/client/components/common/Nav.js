@@ -36,6 +36,12 @@ class Nav extends React.Component {
             <span>Todo</span>
           </Link>
         </Menu.Item>
+        <Menu.Item key="reddit">
+          <Link to="/reddit" style={active === 'reddit' ? activeStyle : {}}>
+            <Icon type="api" />
+            <span>Reddit</span>
+          </Link>
+        </Menu.Item>
       </Menu>
     );
   }
