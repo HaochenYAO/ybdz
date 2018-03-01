@@ -20,7 +20,7 @@ export default class extends Component {
     posts: [],
     isFetching: false,
     dispatch: () => {},
-    lastUpdated: ''
+    lastUpdated: new Date()
   }
   static propTypes = {
     selectedSubreddit: PropTypes.string,
