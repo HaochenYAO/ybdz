@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { autobind } from 'core-decorators';
 import {
   selectSubreddit,
   fetchPostsIfNeeded,
@@ -11,7 +12,24 @@ import Posts from '../components/reddit/Posts';
 import selector from '../selectors/redditSelector';
 import Nav from '../components/common/Nav';
 
-class AsyncApp extends Component {
+@connect(selector)
+@autobind
+export default class extends Component {
+  static defaultProps = {
+    selectedSubreddit: '',
+    posts: [],
+    isFetching: false,
+    dispatch: () => {}
+  }
+  static propTypes = {
+    selectedSubreddit: PropTypes.string,
+    posts: PropTypes.arrayOf(PropTypes.shape({
+      title: PropTypes.string.isRequired
+    })),
+    isFetching: PropTypes.bool,
+    lastUpdated: PropTypes.instanceOf(Date),
+    dispatch: PropTypes.func
+  };
   constructor(props) {
     super(props);
     this.handleChange = this.handleChange.bind(this);
@@ -89,19 +107,3 @@ class AsyncApp extends Component {
     );
   }
 }
-
-AsyncApp.defaultProps = {
-  lastUpdated: new Date()
-};
-
-AsyncApp.propTypes = {
-  selectedSubreddit: PropTypes.string.isRequired,
-  posts: PropTypes.arrayOf(PropTypes.shape({
-    title: PropTypes.string.isRequired.isRequired
-  })).isRequired,
-  isFetching: PropTypes.bool.isRequired,
-  lastUpdated: PropTypes.instanceOf(Date),
-  dispatch: PropTypes.func.isRequired
-};
-
-export default connect(selector)(AsyncApp);

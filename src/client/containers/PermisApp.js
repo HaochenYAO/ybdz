@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 // import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
+import { autobind } from 'core-decorators';
 import Chart from '../components/common/Chart';
 
 const data = {
@@ -43,13 +44,17 @@ const options = {
   scaleShowGridLines: true,
 
 };
-const PermisApp = () => (
-  <div>
-    <Chart
-      data={data}
-      options={options}
-    />
-  </div>);
 
-// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
-export default connect()(PermisApp);
+
+@connect()
+@autobind
+export default class extends Component {
+  render() {
+    return (<div>
+      <Chart
+        data={data}
+        options={options}
+      />
+    </div>);
+  }
+}

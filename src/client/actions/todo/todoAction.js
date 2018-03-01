@@ -1,3 +1,4 @@
+import { todoNotValid } from './errorAction';
 /*
  * action 类型
  */
@@ -9,7 +10,13 @@ export const COMPLETE_TODO = 'COMPLETE_TODO';
  * action 创建函数
  */
 
-export function addTodo(text) {
+export function addTodo(text, callback) {
+  if (text === '') {
+    callback('error');
+    return (dispatch) => {
+      dispatch(todoNotValid('error'));
+    };
+  }
   return { type: ADD_TODO, text };
 }
 

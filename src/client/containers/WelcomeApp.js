@@ -1,12 +1,15 @@
-import React from 'react';
-// import { autobind } from 'core-decorators';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { autobind } from 'core-decorators';
 import Nav from '../components/common/Nav';
 
-const WelcomeApp = () => (
-  <div>
-    <Nav active="home" />
-  </div>);
-
-// 包装 component ，注入 dispatch 和 state 到其默认的 connect(select)(App) 中；
-export default connect()(WelcomeApp);
+@connect()
+@autobind
+export default class extends Component {
+  render() {
+    return (
+      <div>
+        <Nav active="home" />
+      </div>);
+  }
+}

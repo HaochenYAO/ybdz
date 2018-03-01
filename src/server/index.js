@@ -6,6 +6,7 @@ import kstatic from 'koa-static';
 
 const app = new Koa();
 const router = new Router();
+const portDefault = 3011;
 
 app.use(kstatic(path.join(__dirname, '../client/build')));
 app.use(views(path.join(__dirname, './views'), {
@@ -22,5 +23,5 @@ router.get('/', async (ctx, next) => {
 app.use(async (ctx) => {
   await ctx.render('index.html');
 });
-
-app.listen(process.env.PORT || 3003);
+console.log('Listen to:', portDefault);
+app.listen(process.env.PORT || portDefault);
