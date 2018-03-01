@@ -9,7 +9,7 @@ import Root from './Root';
 const storeParam = [
   reducer,
   window.PRELOADED_STATE,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+  window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION()
 ];
 
 const store = configureStore(...storeParam);
@@ -28,6 +28,7 @@ window.onload = () => {
   try {
     renderApp();
   } catch (e) {
+    console.log(e);
   }
 
   if (module.hot) {

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import {
@@ -7,7 +7,17 @@ import {
 
 import Routes from './Routes';
 
-export default class Root extends React.Component {
+export default class Root extends PureComponent {
+  static defaultProps = {
+    store: {},
+  }
+
+  static propTypes = {
+    store: PropTypes.shape({
+      getState: PropTypes.func,
+    }),
+  }
+
   render() {
     const { store } = this.props;
     return (

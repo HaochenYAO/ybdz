@@ -19,12 +19,13 @@ export default class extends Component {
     selectedSubreddit: '',
     posts: [],
     isFetching: false,
-    dispatch: () => {}
+    dispatch: () => {},
+    lastUpdated: ''
   }
   static propTypes = {
     selectedSubreddit: PropTypes.string,
     posts: PropTypes.arrayOf(PropTypes.shape({
-      title: PropTypes.string.isRequired
+      title: PropTypes.string
     })),
     isFetching: PropTypes.bool,
     lastUpdated: PropTypes.instanceOf(Date),

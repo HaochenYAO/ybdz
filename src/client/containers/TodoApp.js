@@ -19,16 +19,16 @@ export default class extends Component {
     visibilityFilter: 'SHOW_ALL'
   }
   static propTypes = {
-    dispatch: PropTypes.func.isRequired,
+    dispatch: PropTypes.func,
     visibleTodos: PropTypes.arrayOf(PropTypes.shape({
       text: PropTypes.string,
       completed: PropTypes.bool
-    }).isRequired).isRequired,
+    }).isRequired),
     visibilityFilter: PropTypes.oneOf([
       'SHOW_ALL',
       'SHOW_COMPLETED',
       'SHOW_ACTIVE'
-    ]).isRequired
+    ])
   };
 
   render() {
@@ -64,4 +64,4 @@ export default class extends Component {
       </div>
     );
   }
-};
+}

@@ -50,11 +50,13 @@ const options = {
 @autobind
 export default class extends Component {
   render() {
-    return (<div>
-      <Chart
-        data={data}
-        options={options}
-      />
-    </div>);
+    return (
+      <div>
+        <Chart
+          data={data}
+          options={options}
+        />
+      </div>
+    );
   }
 }
