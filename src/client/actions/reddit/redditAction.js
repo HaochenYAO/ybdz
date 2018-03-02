@@ -45,8 +45,7 @@ function fetchPosts(subreddit) {
 }
 
 function shouldFetchPosts(state, subreddit) {
-  const posts = state.get('reddit').get('postsBySubreddit').get(subreddit);
-  console.log('posts', posts);
+  const posts = state.get('reddit').get('postsBySubreddit').has(subreddit);
   if (!posts) {
     return true;
   } else if (posts.isFetching) {

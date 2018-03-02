@@ -4,7 +4,7 @@ import ImmutablePropTypes from 'react-immutable-proptypes';
 
 const Posts = props => (
   <ul>
-    {props.get('post').map(post => (
+    {props.posts.map(post => (
       <li key={post.get('title')}>{post.get('title')}</li>
     ))}
   </ul>

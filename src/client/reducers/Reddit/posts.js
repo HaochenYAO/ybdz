@@ -1,4 +1,4 @@
-import { Map } from 'immutable';
+import { List, Map } from 'immutable';
 import {
   INVALIDATE_SUBREDDIT,
   REQUEST_POSTS,
@@ -8,7 +8,8 @@ import {
 const stateDefault = Map({
   isFetching: false,
   didInvalidate: false,
-  items: []
+  items: List(),
+  lastUpdated: new Date(),
 });
 
 export function posts(
@@ -17,19 +18,17 @@ export function posts(
 ) {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
-      state.set('didInvalidate', true);
-      state.set('lastUpdated', state.lastUpdated);
+      state = state.set('didInvalidate', true);
       return state;
     case REQUEST_POSTS:
-      state.set('isFetching', true);
-      state.set('didInvalidate', false);
-      state.set('lastUpdated', state.lastUpdated);
+      state = state.set('isFetching', true);
+      state = state.set('didInvalidate', false);
       return state;
     case RECEIVE_POSTS:
-      state.set('isFetching', false);
-      state.set('didInvalidate', false);
-      state.set('items', action.posts);
-      state.set('lastUpdated', action.receivedAt);
+      state = state.set('isFetching', false);
+      state = state.set('didInvalidate', false);
+      state = state.set('items', action.posts);
+      state = state.set('lastUpdated', action.receivedAt);
       return state;
     default:
       return state;

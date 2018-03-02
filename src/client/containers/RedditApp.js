@@ -26,7 +26,7 @@ export default class extends Component {
   })
   static propTypes = {
     selectedSubreddit: PropTypes.string,
-    posts: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
+    posts: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
       title: PropTypes.string
     })),
     isFetching: PropTypes.bool,
@@ -70,7 +70,7 @@ export default class extends Component {
       isFetching,
       lastUpdated
     } = this.props;
-
+    
     return (
       <div>
         <Nav active="reddit" />
@@ -95,13 +95,13 @@ export default class extends Component {
             </a>
           }
         </p>
-        {isFetching && posts.length === 0 &&
+        {isFetching && posts.size === 0 &&
           <h2>Loading...</h2>
         }
-        {!isFetching && posts.length === 0 &&
+        {!isFetching && posts.size === 0 &&
           <h2>Empty.</h2>
         }
-        {posts.length > 0 &&
+        {posts.size > 0 &&
           <div style={{ opacity: isFetching ? 0.5 : 1 }}>
             <Posts posts={posts} />
           </div>
