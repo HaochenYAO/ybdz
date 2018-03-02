@@ -1,9 +1,9 @@
 import fetch from 'isomorphic-fetch';
-
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
+import Immutable from 'immutable';
 
 export function selectSubreddit(subreddit) {
   return {
@@ -30,7 +30,7 @@ function receivePosts(subreddit, json) {
   return {
     type: RECEIVE_POSTS,
     subreddit,
-    posts: json.data.children.map(child => child.data),
+    posts: Immutable.fromJS(json.data.children.map(child => child.data)),
     receivedAt: new Date()
   };
 }
@@ -45,13 +45,14 @@ function fetchPosts(subreddit) {
 }
 
 function shouldFetchPosts(state, subreddit) {
-  const posts = state.postsBySubreddit[subreddit];
+  const posts = state.get('reddit').get('postsBySubreddit').get(subreddit);
+  console.log('posts', posts);
   if (!posts) {
     return true;
   } else if (posts.isFetching) {
     return false;
   }
-  return posts.didInvalidate;
+  return posts.get(didInvalidate);
 }
 
 export function fetchPostsIfNeeded(subreddit) {

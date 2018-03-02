@@ -5,7 +5,7 @@ import {
   BrowserRouter as Router,
 } from 'react-router-dom';
 
-import Routes from './Routes';
+import Routes from '../routes';
 
 export default class Root extends PureComponent {
   static defaultProps = {
@@ -17,7 +17,6 @@ export default class Root extends PureComponent {
       getState: PropTypes.func,
     }),
   }
-
   render() {
     const { store } = this.props;
     return (

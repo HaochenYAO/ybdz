@@ -4,11 +4,11 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import WelcomeApp from './containers/WelcomeApp';
-import TickApp from './containers/TickApp';
-import TodoApp from './containers/TodoApp';
-import PermisApp from './containers/PermisApp';
-import RedditApp from './containers/RedditApp';
+import WelcomeApp from '../containers/WelcomeApp';
+import TickApp from '../containers/TickApp';
+import TodoApp from '../containers/TodoApp';
+import PermisApp from '../containers/PermisApp';
+import RedditApp from '../containers/RedditApp';
 
 export const routes = [
   {
@@ -42,8 +42,7 @@ export const routes = [
     pageName: 'RedditApp',
   }
 ];
-
-export default () => (
+const Routes = () => (
   <Switch>
     {
       routes.map(route => (
@@ -57,3 +56,4 @@ export default () => (
     }
   </Switch>
 );
+export default Routes;

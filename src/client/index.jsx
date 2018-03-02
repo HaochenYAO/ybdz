@@ -4,11 +4,13 @@ import { AppContainer } from 'react-hot-loader';
 
 import configureStore from './store/configureStore';
 import reducer from './reducers';
-import Root from './Root';
+import Root from './root';
+import Immutable from 'immutable';
 
+const initialState = Immutable.fromJS(window.PRELOADED_STATE);
 const storeParam = [
   reducer,
-  window.PRELOADED_STATE,
+  initialState,
   window.REDUX_DEVTOOLS_EXTENSION && window.REDUX_DEVTOOLS_EXTENSION()
 ];
 
@@ -32,9 +34,9 @@ window.onload = () => {
   }
 
   if (module.hot) {
-    module.hot.accept('./Root', () => {
+    module.hot.accept('./root', () => {
       // eslint-disable-next-line global-require
-      const NextRoot = require('./Root').default;
+      const NextRoot = require('./root').default;
       render(
         <AppContainer>
           <NextRoot store={store} />

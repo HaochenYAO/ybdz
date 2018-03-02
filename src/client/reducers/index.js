@@ -1,16 +1,11 @@
-import { combineReducers } from 'redux';
-import visibilityFilter from './Todo/visibilityFilter';
-import todos from './Todo/todo';
+import { combineReducers } from 'redux-immutable';
+import todo from './Todo';
+import reddit from './Reddit';
 import error from './error';
-import { posts, postsBySubreddit } from './Reddit/posts';
-import selectedSubreddit from './Reddit/selectedSubreddit';
 
 const reducer = combineReducers({
-  visibilityFilter,
-  todos,
-  posts,
-  postsBySubreddit,
-  selectedSubreddit,
+  todo,
+  reddit,
   error
 });
 

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
+import { List } from 'immutable';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import { addTodo, completeTodo } from '../actions/todo/todoAction';
 import { setVisibilityFilter } from '../actions/todo/filterAction';
 import AddTodo from '../components/todo/AddTodo';
@@ -15,12 +17,12 @@ import selector from '../selectors/todoSelector';
 export default class extends Component {
   static defaultProps = {
     dispatch: () => {},
-    visibleTodos: [],
+    visibleTodos: List(),
     visibilityFilter: 'SHOW_ALL'
   }
   static propTypes = {
     dispatch: PropTypes.func,
-    visibleTodos: PropTypes.arrayOf(PropTypes.shape({
+    visibleTodos: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
       text: PropTypes.string,
       completed: PropTypes.bool
     }).isRequired),

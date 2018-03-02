@@ -1,13 +1,13 @@
 import { createSelector } from 'reselect';
 
-const selectedSubredditSelector = state => state.selectedSubreddit;
-const postsBySubredditSelector = state => state.postsBySubreddit;
+const selectedSubredditSelector = state => state.get('reddit').get('selectedSubreddit');
+const postsBySubredditSelector = state => state.get('reddit').get('postsBySubreddit');
 const selectPosts = (selectedSubreddit, postsBySubreddit) => {
   const {
     isFetching,
     lastUpdated,
     items: posts
-  } = postsBySubreddit[selectedSubreddit] || {
+  } = postsBySubreddit.get(selectedSubreddit) || {
     isFetching: true,
     items: []
   };

@@ -1,14 +1,15 @@
+import { Map } from 'immutable';
 import {
   INVALIDATE_SUBREDDIT,
   REQUEST_POSTS,
   RECEIVE_POSTS
 } from '../../actions/reddit/redditAction';
 
-const stateDefault = {
+const stateDefault = Map({
   isFetching: false,
   didInvalidate: false,
   items: []
-};
+});
 
 export function posts(
   state = stateDefault,
@@ -16,36 +17,31 @@ export function posts(
 ) {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
-      return Object.assign({}, state, {
-        didInvalidate: true,
-        lastUpdated: state.lastUpdated,
-      });
+      state.set('didInvalidate', true);
+      state.set('lastUpdated', state.lastUpdated);
+      return state;
     case REQUEST_POSTS:
-      return Object.assign({}, state, {
-        isFetching: true,
-        didInvalidate: false,
-        lastUpdated: state.lastUpdated,
-      });
+      state.set('isFetching', true);
+      state.set('didInvalidate', false);
+      state.set('lastUpdated', state.lastUpdated);
+      return state;
     case RECEIVE_POSTS:
-      return Object.assign({}, state, {
-        isFetching: false,
-        didInvalidate: false,
-        items: action.posts,
-        lastUpdated: action.receivedAt
-      });
+      state.set('isFetching', false);
+      state.set('didInvalidate', false);
+      state.set('items', action.posts);
+      state.set('lastUpdated', action.receivedAt);
+      return state;
     default:
       return state;
   }
 }
 
-export function postsBySubreddit(state = {}, action) {
+export function postsBySubreddit(state = Map({}), action) {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
     case RECEIVE_POSTS:
     case REQUEST_POSTS:
-      return Object.assign({}, state, {
-        [action.subreddit]: posts(state[action.subreddit], action)
-      });
+      return state.set(action.subreddit, posts(state.get(action.subreddit), action));
     default:
       return state;
   }

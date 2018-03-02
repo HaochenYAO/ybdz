@@ -6,7 +6,7 @@ import kstatic from 'koa-static';
 
 const app = new Koa();
 const router = new Router();
-const portDefault = 3011;
+const portDefault = 3006;
 
 app.use(kstatic(path.join(__dirname, '../client/build')));
 app.use(views(path.join(__dirname, './views'), {

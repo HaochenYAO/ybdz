@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
+import { List, Map } from 'immutable';
+import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
   selectSubreddit,
   fetchPostsIfNeeded,
@@ -15,16 +17,16 @@ import Nav from '../components/common/Nav';
 @connect(selector)
 @autobind
 export default class extends Component {
-  static defaultProps = {
+  static defaultProps = Map({
     selectedSubreddit: '',
-    posts: [],
+    posts: List(),
     isFetching: false,
     dispatch: () => {},
     lastUpdated: new Date()
-  }
+  })
   static propTypes = {
     selectedSubreddit: PropTypes.string,
-    posts: PropTypes.arrayOf(PropTypes.shape({
+    posts: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
       title: PropTypes.string
     })),
     isFetching: PropTypes.bool,
