@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
-import { List, Map } from 'immutable';
+import { List } from 'immutable';
 import ImmutablePropTypes from 'react-immutable-proptypes';
 import {
   selectSubreddit,
@@ -17,13 +17,13 @@ import Nav from '../components/common/Nav';
 @connect(selector)
 @autobind
 export default class extends Component {
-  static defaultProps = Map({
+  static defaultProps = {
     selectedSubreddit: '',
     posts: List(),
     isFetching: false,
     dispatch: () => {},
     lastUpdated: new Date()
-  })
+  }
   static propTypes = {
     selectedSubreddit: PropTypes.string,
     posts: ImmutablePropTypes.listOf(ImmutablePropTypes.mapContains({
@@ -70,7 +70,7 @@ export default class extends Component {
       isFetching,
       lastUpdated
     } = this.props;
-    
+
     return (
       <div>
         <Nav active="reddit" />

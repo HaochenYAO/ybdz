@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import Immutable from 'immutable';
 
 import configureStore from './store/configureStore';
 import reducer from './reducers';
 import Root from './root';
-import Immutable from 'immutable';
 
 const initialState = Immutable.fromJS(window.PRELOADED_STATE);
 const storeParam = [

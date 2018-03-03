@@ -18,18 +18,14 @@ export function posts(
 ) {
   switch (action.type) {
     case INVALIDATE_SUBREDDIT:
-      state = state.set('didInvalidate', true);
-      return state;
+      return state.set('didInvalidate', true);
     case REQUEST_POSTS:
-      state = state.set('isFetching', true);
-      state = state.set('didInvalidate', false);
-      return state;
+      return state.set('didInvalidate', false).set('isFetching', true);
     case RECEIVE_POSTS:
-      state = state.set('isFetching', false);
-      state = state.set('didInvalidate', false);
-      state = state.set('items', action.posts);
-      state = state.set('lastUpdated', action.receivedAt);
-      return state;
+      return state.set('isFetching', false)
+        .set('didInvalidate', false)
+        .set('items', action.posts)
+        .set('lastUpdated', action.receivedAt);
     default:
       return state;
   }

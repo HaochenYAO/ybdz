@@ -1,6 +1,6 @@
 import uuidv1 from 'uuid/v1';
-import { ADD_TODO, COMPLETE_TODO } from '../../actions/todo/todoAction';
 import { List, Map } from 'immutable';
+import { ADD_TODO, COMPLETE_TODO } from '../../actions/todo/todoAction';
 
 const stateDefault = List();
 export default function (state = stateDefault, action) {

@@ -1,9 +1,10 @@
 import fetch from 'isomorphic-fetch';
+import Immutable from 'immutable';
+
 export const REQUEST_POSTS = 'REQUEST_POSTS';
 export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const SELECT_SUBREDDIT = 'SELECT_SUBREDDIT';
 export const INVALIDATE_SUBREDDIT = 'INVALIDATE_SUBREDDIT';
-import Immutable from 'immutable';
 
 export function selectSubreddit(subreddit) {
   return {
@@ -45,13 +46,13 @@ function fetchPosts(subreddit) {
 }
 
 function shouldFetchPosts(state, subreddit) {
-  const posts = state.get('reddit').get('postsBySubreddit').has(subreddit);
-  if (!posts) {
+  const posts = state.get('reddit').get('postsBySubreddit');
+  if (!posts.has(subreddit)) {
     return true;
   } else if (posts.isFetching) {
     return false;
   }
-  return posts.get(didInvalidate);
+  return posts.get(subreddit).get('didInvalidate');
 }
 
 export function fetchPostsIfNeeded(subreddit) {
