@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import { autobind } from 'core-decorators';
 
+@autobind
 class Tick extends Component {
   state = {
     timeNow: new Date().toLocaleTimeString()
   };
   componentDidMount() {
-    const intervalId = setInterval(this.timer.bind(this), 1000);
+    const intervalId = setInterval(this.timer, 1000);
     // store intervalId in the state so it can be accessed later:
     this.state.intervalId = intervalId;
   }

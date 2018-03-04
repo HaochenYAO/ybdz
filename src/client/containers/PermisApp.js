@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import { autobind } from 'core-decorators';
 import { connect } from 'react-redux';
 import { autobind } from 'core-decorators';
 import Chart from '../components/common/Chart';

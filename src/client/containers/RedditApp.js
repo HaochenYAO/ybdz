@@ -33,11 +33,6 @@ export default class extends Component {
     lastUpdated: PropTypes.instanceOf(Date),
     dispatch: PropTypes.func
   };
-  constructor(props) {
-    super(props);
-    this.handleChange = this.handleChange.bind(this);
-    this.handleRefreshClick = this.handleRefreshClick.bind(this);
-  }
 
   componentDidMount() {
     const { dispatch, selectedSubreddit } = this.props;
