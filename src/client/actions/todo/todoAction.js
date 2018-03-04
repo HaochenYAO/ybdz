@@ -1,14 +1,9 @@
 import { todoNotValid } from './errorAction';
 /*
- * action 类型
+ * todo Action
  */
 export const ADD_TODO = 'ADD_TODO';
 export const COMPLETE_TODO = 'COMPLETE_TODO';
-
-
-/*
- * action 创建函数
- */
 
 export function addTodo(text, callback) {
   if (text === '') {

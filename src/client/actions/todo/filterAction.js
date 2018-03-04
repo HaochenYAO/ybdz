@@ -1,8 +1,11 @@
 /*
- * 其它的常量
+ * filter action
  */
+
+// variable
 export const SET_VISIBILITY_FILTER = 'SET_VISIBILITY_FILTER';
 
+// function
 export const VisibilityFilters = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',

@@ -21,7 +21,7 @@ export default class extends Component {
       })
     }),
   };
-  // Injected by connect() call:
+
   render() {
     const { match: { params: { name } } } = this.props;
     return (
