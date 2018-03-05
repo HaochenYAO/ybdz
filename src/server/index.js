@@ -1,17 +1,30 @@
 import Koa from 'koa';
-import views from 'koa-views';
 import Router from 'koa-router';
 import path from 'path';
 import kstatic from 'koa-static';
+import render from 'koa-ejs';
+
+import config from './config';
 
 const app = new Koa();
 const router = new Router();
 const portDefault = 3006;
+const assets = config('assets') || 'dev';
+let assetsPrefix = '/';
 
-app.use(kstatic(path.join(__dirname, '../client/build')));
-app.use(views(path.join(__dirname, './views'), {
-  extension: 'html'
-}));
+if (assets === 'dev') {
+  assetsPrefix = 'http://localhost:3001/build/';
+} else {
+  app.use(kstatic(path.join(__dirname, '../../build')));
+}
+
+render(app, {
+  root: path.join(__dirname, './views'),
+  layout: '',
+  viewExt: 'html',
+  cache: false,
+  debug: false
+});
 
 router.get('/', async (ctx, next) => {
   const start = new Date();
@@ -21,7 +34,9 @@ router.get('/', async (ctx, next) => {
 });
 // response
 app.use(async (ctx) => {
-  await ctx.render('index.html');
+  await ctx.render('index', { assetsPrefix });
 });
-console.log('Listen to:', portDefault);
-app.listen(process.env.PORT || portDefault);
+
+app.listen(process.env.PORT || portDefault, () => {
+  console.log('\x1b[36m%s\x1b[0m', `Listen to: ${portDefault}`);
+});
