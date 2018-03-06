@@ -9,7 +9,6 @@ const BUILD_DIR = path.resolve(__dirname, '../../');
 const APP_DIR = path.resolve(__dirname, '../client');
 
 const webpackConfig = {
-  devtool: 'cheap-module-eval-source-map',
   entry: {
     react: [
       `${APP_DIR}/index.jsx`,
