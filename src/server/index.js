@@ -9,10 +9,10 @@ import config from './config';
 const app = new Koa();
 const router = new Router();
 const portDefault = 3006;
-const assets = config('assets') || 'dev';
+const assets = config('assets') || 'development';
 let assetsPrefix = '/';
 
-if (assets === 'dev') {
+if (assets === 'development') {
   assetsPrefix = 'http://localhost:3001/build/';
 } else {
   app.use(kstatic(path.join(__dirname, '../../build')));

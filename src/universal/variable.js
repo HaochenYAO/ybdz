@@ -1,3 +1,3 @@
 // env
-export const V_ENV_DEVELOPMENT = 'dev';
-export const V_ENV_PRODUCTION = 'prod';
+export const V_ENV_DEVELOPMENT = 'development';
+export const V_ENV_PRODUCTION = 'production';

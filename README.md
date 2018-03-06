@@ -22,7 +22,7 @@
   - npm start
 - prod
   - npm run build
-  - NODE_ENV=prod npm start
+  - NODE_ENV=production npm start
 
 ## css style guide
 https://css-tricks.com/bem-101/

@@ -2,7 +2,7 @@ import path from 'path';
 import webpack from 'webpack';
 import config from '../server/config';
 
-const assets = config('assets') || 'dev';
+const assets = config('assets') || 'development';
 
 const BUILD_DIR = path.resolve(__dirname, '../../');
 
@@ -18,7 +18,7 @@ const webpackConfig = {
       'react',
       'react-dom',
       'react-router-dom',
-    ].concat(assets === 'dev' ? [
+    ].concat(assets === 'development' ? [
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:3001',
       'webpack/hot/only-dev-server',
@@ -33,7 +33,7 @@ const webpackConfig = {
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: 'vendor', minChunks: Infinity }),
-  ].concat(assets === 'dev' ? [
+  ].concat(assets === 'development' ? [
     new webpack.HotModuleReplacementPlugin(),
   ] : [
     new webpack.optimize.UglifyJsPlugin({
@@ -43,7 +43,7 @@ const webpackConfig = {
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('prod'),
+        NODE_ENV: JSON.stringify('production'),
       },
     }),
   ]),
@@ -51,10 +51,13 @@ const webpackConfig = {
     extensions: ['.js', '.jsx']
   },
   module: {
+    noParse: /^react(-dom|-router-dom)?$/,
     rules: [
       {
         test: /\.jsx?$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: [
+          path.resolve(__dirname, '../../node_modules'),
+        ],
         use: 'babel-loader?cacheDirectory',
       },
       {
