@@ -7,7 +7,7 @@ import {
 import WelcomeApp from '../containers/WelcomeApp';
 import TickApp from '../containers/TickApp';
 import TodoApp from '../containers/TodoApp';
-import PermisApp from '../containers/PermisApp';
+import ChartApp from '../containers/ChartApp';
 import RedditApp from '../containers/RedditApp';
 
 export const routes = [
@@ -30,10 +30,10 @@ export const routes = [
     pageName: 'TickApp',
   },
   {
-    path: '/permis',
-    component: PermisApp,
+    path: '/chart/:brand/:plateform/:field',
+    component: ChartApp,
     exact: true,
-    pageName: 'PermisApp',
+    pageName: 'ChartApp',
   },
   {
     path: '/reddit',

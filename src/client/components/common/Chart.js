@@ -8,30 +8,30 @@ const Chart = props => (
     options={props.options}
   />);
 
-
 Chart.propTypes = {
-  data: PropTypes.PropTypes.oneOf(['Jan',
-    'Feb',
-    'Mar',
-    'Apr',
-    'May',
-    'Jun',
-    'Jul',
-    'Aug',
-    'Sep',
-    'Oct',
-    'Nov',
-    'Dec'
-  ]).isRequired,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
-    fillColor: PropTypes.string.isRequired,
-    strokeColor: PropTypes.string.isRequired,
-    pointColor: PropTypes.string.isRequired,
-    pointStrokeColor: PropTypes.string.isRequired,
-    pointHighlightFill: PropTypes.string.isRequired,
-    pointHighlightStroke: PropTypes.string.isRequired,
-    data: PropTypes.arrayOf(PropTypes.number).isRequired,
-  }).isRequired).isRequired,
+  data: PropTypes.shape({
+    labels: PropTypes.arrayOf(PropTypes.string).isRequired,
+    datasets: PropTypes.arrayOf(PropTypes.shape({
+      label: PropTypes.string.isRequired,
+      fillColor: PropTypes.string,
+      strokeColor: PropTypes.string,
+      pointColor: PropTypes.string,
+      pointStrokeColor: PropTypes.string,
+      pointHighlightFill: PropTypes.string,
+      pointHighlightStroke: PropTypes.string,
+      data: PropTypes.arrayOf(PropTypes.number).isRequired,
+    }).isRequired).isRequired,
+  }),
+  options: PropTypes.shape({
+    scaleShowGridLines: PropTypes.bool
+  }),
+};
+
+Chart.defaultProps = {
+  data: {
+    labels: [],
+    datasets: [],
+  },
+  options: {}
 };
 export default Chart;

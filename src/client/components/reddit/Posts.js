@@ -12,7 +12,7 @@ const Posts = props => (
 
 Posts.propTypes = {
   posts: ImmutablePropTypes.listOf(ImmutablePropTypes.contains({
-    title: PropTypes.string.isRequired.isRequired
+    title: PropTypes.string.isRequired
   })).isRequired
 };
 
